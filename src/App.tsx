@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import './App.css';
 
 // Conventional props
@@ -8,10 +8,21 @@ function Heading({ title }: { title: string }) {
   )
 }
 
+function HeadingWithContent({ children }: { children: ReactNode }): ReactElement {
+  return (
+    <h1>{children}</h1>
+  )
+}
+
+// default props
+
 function App() {
   return (
     <div>
-      <Heading title="Hello there" />
+      <Heading title="Hello" />
+      <HeadingWithContent>
+        <strong>Hi</strong>
+      </HeadingWithContent>
     </div>
   );
 }
