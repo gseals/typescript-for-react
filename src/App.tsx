@@ -15,6 +15,15 @@ function HeadingWithContent({ children }: { children: ReactNode }): ReactElement
 }
 
 // default props
+const defaultContainerProps = {
+  heading: <strong>My Heading</strong>
+};
+type ContainerProps = { children: ReactNode } & typeof defaultContainerProps;
+
+function Container({ heading, children }: ContainerProps): ReactElement {
+  return <div><h1>{heading}</h1>{children}</div>
+}
+Container.defaultProps = defaultContainerProps;
 
 function App() {
   return (
@@ -23,6 +32,9 @@ function App() {
       <HeadingWithContent>
         <strong>Hi</strong>
       </HeadingWithContent>
+      <Container>
+        Foo
+      </Container>
     </div>
   );
 }
