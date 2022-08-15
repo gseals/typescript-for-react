@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode, useState } from 'react';
 import './App.css';
 
 // Conventional props
@@ -25,6 +25,29 @@ function Container({ heading, children }: ContainerProps): ReactElement {
 }
 Container.defaultProps = defaultContainerProps;
 
+// Functional props
+function TextWithNumber({
+  header,
+  children
+}: {
+  header?: (num: number) => ReactNode;
+  children: (num: number) => ReactNode
+}) {
+  const [state, stateSet] = useState<number>(1);
+
+  return (
+    <div>
+      {header && <h2>header?.(state)</h2>}
+      <div>
+        {children(state)}
+      </div>
+      <div>
+        <button onClick={() => stateSet(state + 1)}>Add</button>
+      </div>
+    </div>
+  )
+};
+
 function App() {
   return (
     <div>
@@ -35,6 +58,7 @@ function App() {
       <Container>
         Foo
       </Container>
+      <TextWithNumber header={(num: number) => <span>Header {num}</span>}>{(num: number) => <div>Today's number is {num}</div>}</TextWithNumber>
     </div>
   );
 }
