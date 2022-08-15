@@ -1,8 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and follows [Typescript for React Components From Beginners to Masters](https://youtu.be/z8lDwLKthr8) by [Jack Herrington](https://www.youtube.com/c/JackHerrington)
 
 ## Available Scripts
+
+If you are pulling this down, you may need to run `npm install` to ensure all dependencies are covered.
 
 In the project directory, you can run:
 
