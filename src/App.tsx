@@ -37,7 +37,7 @@ function TextWithNumber({
 
   return (
     <div>
-      {header && <h2>header?.(state)</h2>}
+      {header && <h2>{header?.(state)}</h2>}
       <div>
         {children(state)}
       </div>
@@ -64,7 +64,19 @@ function List<ListItem>({
         </li>
       ))}
     </ul>
-  )
+  );
+}
+
+// Class component
+class MyHeading extends React.Component<{title: ReactNode,}> {
+  
+  render(
+  ) {
+    const { title } = this.props;
+    return (
+      <h1>{title}</h1>
+    )
+  }
 }
 
 function App() {
@@ -79,6 +91,7 @@ function App() {
       </Container>
       <TextWithNumber header={(num: number) => <span>Header {num}</span>}>{(num: number) => <div>Today's number is {num}</div>}</TextWithNumber>
       <List items={["JACK", "SADIE", "OSO"]} render={(item: string) => <div>{item.toLowerCase()}</div>}></List>
+      <MyHeading title={"There yah go!"} />
     </div>
   );
 }
